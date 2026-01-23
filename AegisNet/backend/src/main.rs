@@ -10,6 +10,8 @@ use tower_http::cors::CorsLayer;
 mod db;
 mod entities;
 mod api;
+mod services;
+mod scanner;
 
 #[tokio::main]
 async fn main() {
@@ -35,12 +37,14 @@ async fn main() {
     let app = Router::new()
         .route("/", get(root))
         .route("/health", get(health_check))
-        .route("/api/v1/logs", post(api::ingest::ingest_log))
+        .route("/api/v1/logs", post(api::ingest::ingest_log).get(api::ingest::list_logs))
+        .route("/api/v1/scan", post(api::scan::start_scan))
+        .route("/api/v1/stats", get(api::stats::get_stats))
         .with_state(_db)
         .layer(cors);
 
     // Run app
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8000));
     tracing::info!("listening on {}", addr);
     
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();

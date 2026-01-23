@@ -1,0 +1,29 @@
+# Rust matches
+target/
+**/*.rs.bk
+Cargo.lock
+
+# Node.js matches
+node_modules/
+dist/
+.env.local
+
+# Secrets & Database (CRITICAL)
+.env
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.log
+
+# Debug Symbols
+*.pdb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp

@@ -29,3 +29,8 @@ sea-orm = { version = "0.12", features = [ "sqlx-sqlite", "runtime-tokio-rustls"
 # Utilities
 chrono = "0.4"
 uuid = { version = "1.0", features = ["v4", "serde"] }
+regex = "1.10"
+dashmap = "5.5"
+reqwest = { version = "0.11", default-features = false, features = ["json", "blocking", "rustls-tls"] }
+socket2 = "0.5"
+dns-lookup = "2.0"

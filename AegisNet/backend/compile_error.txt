@@ -1,0 +1,81 @@
+    Checking aegis_net_backend v0.1.0 (D:\Programmieren\Github\Neuer Ordner\AegisNet\backend)
+warning: unused import: `DbBackend`
+  --> src\db.rs:19:35
+   |
+19 |     use sea_orm::{schema::Schema, DbBackend};
+   |                                   ^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `std::net::IpAddr`
+ --> src\api\scan.rs:6:5
+  |
+6 | use std::net::IpAddr;
+  |     ^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::services::scanner::Scanner`
+ --> src\api\scan.rs:7:5
+  |
+7 | use crate::services::scanner::Scanner;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `self`
+  --> src\api\scan.rs:16:22
+   |
+16 | use crate::scanner::{self, Host};
+   |                      ^^^^
+
+warning: unused import: `http::StatusCode`
+ --> src\api\stats.rs:5:5
+  |
+5 |     http::StatusCode,
+  |     ^^^^^^^^^^^^^^^^
+
+warning: unused import: `regex::Regex`
+ --> src\services\normalization.rs:3:5
+  |
+3 | use regex::Regex;
+  |     ^^^^^^^^^^^^
+
+warning: unused import: `crate::scanner::Host`
+ --> src\scanner\discovery\arp.rs:3:5
+  |
+3 | use crate::scanner::Host;
+  |     ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `IpAddr`
+ --> src\scanner\discovery\tcp.rs:1:16
+  |
+1 | use std::net::{IpAddr, SocketAddr};
+  |                ^^^^^^
+
+warning: unused import: `crate::scanner::Host`
+ --> src\scanner\discovery\tcp.rs:5:5
+  |
+5 | use crate::scanner::Host;
+  |     ^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: `match` arms have incompatible types
+  --> src\scanner\fingerprint\banner.rs:19:23
+   |
+17 |                let probe = match port {
+   |  __________________________-
+18 | |                  80 | 8080 => b"HEAD / HTTP/1.0\r\n\r\n",
+   | |                               -------------------------- this is found to be of type `&[u8; 19]`
+19 | |                  _ => b"\r\n", 
+   | |                       ^^^^^^^ expected an array with a size of 19, found one with a size of 2
+20 | |              };
+   | |______________- `match` arms have incompatible types
+
+warning: value assigned to `os` is never read
+ --> src\scanner\fingerprint\os.rs:5:17
+  |
+5 |         let mut os = String::from("Unknown OS");
+  |                 ^^
+  |
+  = help: maybe it is overwritten before being read?
+  = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+For more information about this error, try `rustc --explain E0308`.
+warning: `aegis_net_backend` (bin "aegis_net_backend") generated 10 warnings
+error: could not compile `aegis_net_backend` (bin "aegis_net_backend") due to 1 previous error; 10 warnings emitted
