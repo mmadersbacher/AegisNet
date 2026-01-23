@@ -23,8 +23,8 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 # Config
 dotenvy = "0.15"
 
-# Database (SeaORM + Postgres)
-sea-orm = { version = "0.12", features = [ "sqlx-postgres", "runtime-tokio-rustls", "macros" ] }
+# Database (SeaORM + SQLite)
+sea-orm = { version = "0.12", features = [ "sqlx-sqlite", "runtime-tokio-rustls", "macros" ] }
 
 # Utilities
 chrono = "0.4"

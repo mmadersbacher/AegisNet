@@ -1,5 +1,5 @@
 use axum::{
-    routing::get,
+    routing::{get, post},
     Router,
     Json,
 };
@@ -8,6 +8,8 @@ use std::net::SocketAddr;
 use tower_http::cors::CorsLayer;
 
 mod db;
+mod entities;
+mod api;
 
 #[tokio::main]
 async fn main() {
@@ -33,6 +35,8 @@ async fn main() {
     let app = Router::new()
         .route("/", get(root))
         .route("/health", get(health_check))
+        .route("/api/v1/logs", post(api::ingest::ingest_log))
+        .with_state(_db)
         .layer(cors);
 
     // Run app
