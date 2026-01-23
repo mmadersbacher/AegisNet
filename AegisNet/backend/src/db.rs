@@ -1,4 +1,4 @@
-use sea_orm::{Database, DatabaseConnection};
+use sea_orm::{Database, DatabaseConnection, ConnectionTrait};
 use std::env;
 
 pub async fn connect() -> Result<DatabaseConnection, sea_orm::DbErr> {
