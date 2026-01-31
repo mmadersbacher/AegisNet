@@ -1,5 +1,5 @@
 use crate::scanner::{Host, Service};
-use crate::scanner::discovery::{arp, tcp, icmp, passive, netbios, llmnr, udp};
+use crate::scanner::discovery::{arp, tcp, icmp, mdns, ssdp, netbios, llmnr, udp};
 use crate::scanner::fingerprint::{oui, os, http, snmp, smb};
 use crate::scanner::vuln::db;
 
@@ -14,13 +14,14 @@ impl ScannerCore {
         // 1. DISCOVERY PHASE
         // Combine Passive Listening, Aggressive ICMP, and TCP Probing
         
-        let (passive_ips, icmp_ips, tcp_ips, netbios_res, llmnr_ips, udp_ips) = tokio::join!(
-            passive::PassiveSniffer::listen(tokio::time::Duration::from_secs(5)),
+        let (mdns_res, icmp_ips, tcp_ips, netbios_res, llmnr_ips, udp_ips, ssdp_res) = tokio::join!(
+            mdns::MdnsScanner::scan(tokio::time::Duration::from_secs(4)),
             icmp::IcmpScanner::scan_subnet(cidr),
             tcp::TcpDiscovery::scan_subnet(cidr),
             netbios::NetBiosScanner::scan_subnet(cidr),
             llmnr::LlmnrListener::listen(tokio::time::Duration::from_secs(5)),
-            udp::UdpScanner::scan_subnet(cidr)
+            udp::UdpScanner::scan_subnet(cidr),
+            ssdp::SsdpScanner::scan(tokio::time::Duration::from_secs(4))
         );
 
         // Allow some time for ARP table to settle after all that noise
@@ -40,27 +41,28 @@ impl ScannerCore {
         let mut seen = std::collections::HashSet::new();
         let mut reliable_hosts = std::collections::HashSet::new(); // IPs confirmed by active/passive means
 
-        // Mark IPs from Passive/ICMP/UDP/NetBIOS/LLMNR as "Reliably Alive"
-        for ip in passive_ips.iter().chain(icmp_ips.iter()).chain(udp_ips.iter()).chain(llmnr_ips.iter()).chain(netbios_res.iter().map(|(k,_)| k)) {
+        // Mark IPs from Active means as "Reliably Alive"
+        for ip in mdns_res.keys().chain(icmp_ips.iter()).chain(udp_ips.iter()).chain(llmnr_ips.iter()).chain(netbios_res.iter().map(|(k,_)| k)).chain(ssdp_res.keys()) {
             reliable_hosts.insert(ip.clone());
         }
 
-        for ip in passive_ips.into_iter()
-            .chain(icmp_ips.into_iter())
-            .chain(tcp_ips.into_iter()) 
-            .chain(llmnr_ips.into_iter())
-            .chain(udp_ips.into_iter())
-            .chain(netbios_map.keys().cloned())
-            .chain(arp_table.keys().cloned()) {
+        for ip in mdns_res.keys()
+            .chain(icmp_ips.iter())
+            .chain(tcp_ips.iter()) 
+            .chain(llmnr_ips.iter())
+            .chain(udp_ips.iter())
+            .chain(ssdp_res.keys())
+            .chain(netbios_map.keys())
+            .chain(arp_table.keys()) {
             
             if seen.insert(ip.clone()) {
-                unique_ips.push(ip);
+                unique_ips.push(ip.clone());
             }
         }
 
         // 2. ENRICHMENT PHASE
         for ip in unique_ips {
-            if let Some(host) = Self::enrich_host(ip, &arp_table, &netbios_map, &reliable_hosts).await {
+            if let Some(host) = Self::enrich_host(ip, &arp_table, &netbios_map, &mdns_res, &ssdp_res, &reliable_hosts).await {
                 hosts.push(host);
             }
         }
@@ -78,7 +80,14 @@ impl ScannerCore {
         hosts
     }
 
-    async fn enrich_host(ip: String, arp_table: &std::collections::HashMap<String, String>, netbios_map: &std::collections::HashMap<String, String>, reliable_hosts: &std::collections::HashSet<String>) -> Option<Host> {
+    async fn enrich_host(
+        ip: String, 
+        arp_table: &std::collections::HashMap<String, String>, 
+        netbios_map: &std::collections::HashMap<String, String>, 
+        mdns_map: &std::collections::HashMap<String, mdns::MdnsInfo>,
+        ssdp_map: &std::collections::HashMap<String, ssdp::UpnpDevice>,
+        reliable_hosts: &std::collections::HashSet<String>
+    ) -> Option<Host> {
         // Filter Broadcast / Multicast
         if ip.ends_with(".255") || ip.ends_with(".0") || ip.starts_with("224.") || ip.starts_with("239.") { 
             return None; 
@@ -92,20 +101,51 @@ impl ScannerCore {
         let vendor = oui::OuiDb::lookup(&mac);
         
         // NetBIOS Name Preference
-        let hostname = if let Some(nb_name) = netbios_map.get(&ip) {
+        let mut hostname = if let Some(nb_name) = netbios_map.get(&ip) {
             nb_name.clone()
         } else {
-            vendor.clone() // Fallback
+            // Try mDNS hostname
+            if let Some(mdns_info) = mdns_map.get(&ip) {
+                mdns_info.hostname.clone().unwrap_or(vendor.clone())
+            } else {
+                vendor.clone() 
+            }
         };
+
+        // Gather Rich Details
+        let mut manufacturer = None;
+        let mut model = None;
+        let mut friendly_name = None;
+
+        // SSDP Overrides
+        if let Some(ssdp_dev) = ssdp_map.get(&ip) {
+             if let Some(m) = &ssdp_dev.manufacturer { manufacturer = Some(m.clone()); }
+             if let Some(m) = &ssdp_dev.model_name { model = Some(m.clone()); }
+             if let Some(f) = &ssdp_dev.friendly_name { friendly_name = Some(f.clone()); }
+        }
+
+        // mDNS Overrides (often better for Apple)
+        if let Some(mdns_info) = mdns_map.get(&ip) {
+             if let Some(m) = &mdns_info.model { model = Some(m.clone()); }
+        }
         
         // SCAN: Ports (Re-Verify)
         let open_ports = quick_port_scan(&ip).await;
-        // Optimization: If we found it via active means (NetBIOS/AR/Passive/UDP), we keep it even if ports closed.
-        // We only drop if it's NOT reliable AND has no ports (ghosts from stale ARP)
-        if open_ports.is_empty() && !netbios_map.contains_key(&ip) && !reliable_hosts.contains(&ip) { return None; }
+        // UPDATE: For iPhones/Firewalled devices, we TRUST ARP if it's there.
+        // Even if no ports are open, if ARP says it's there (presumably because we just tickled it), we keep it.
+        // We only drop if it's NOT in ARP, NOT in NetBIOS, and NOT reliable.
+        if open_ports.is_empty() && !arp_table.contains_key(&ip) && !netbios_map.contains_key(&ip) && !reliable_hosts.contains(&ip) { return None; }
 
         // FINGERPRINT: OS
-        let os_family = os::OsFingerprint::infer(64, &open_ports);
+        let mut os_family = os::OsFingerprint::infer(64, &open_ports);
+        
+        // Fallback: If OS unknown but Vendor is clear
+        if os_family == "Unknown" {
+             if vendor.contains("Apple") { os_family = "iOS/macOS".to_string(); }
+             else if vendor.contains("Samsung") || vendor.contains("Huawei") || vendor.contains("Google") { os_family = "Android".to_string(); }
+             else if vendor.contains("Microsoft") { os_family = "Windows".to_string(); }
+             else if vendor.contains("Synology") || vendor.contains("Qlync") { os_family = "DSM (Linux)".to_string(); }
+        }
         
         // CLASSIFY: Device Type
         let device_type = if vendor.contains("Apple") || vendor.contains("Samsung") { "Mobile/Tablet".to_string() }
@@ -180,12 +220,16 @@ impl ScannerCore {
             mac,
             hostname,
             vendor,
+            manufacturer,
+            model,
+            friendly_name,
             os_family,
             device_type,
             open_ports,
             services,
             risk_score: host_risk,
         })
+
     }
 }
 

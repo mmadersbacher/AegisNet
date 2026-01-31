@@ -1,0 +1,376 @@
+﻿{
+    "target":  "192.168.8.0/24",
+    "status":  "Completed",
+    "hosts":  [
+                  {
+                      "ip":  "192.168.8.1",
+                      "mac":  "62:96:AD:E4:79:00",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Server/Web",
+                      "open_ports":  [
+                                         80,
+                                         443
+                                     ],
+                      "services":  [
+                                       {
+                                           "port":  80,
+                                           "protocol":  "TCP",
+                                           "name":  "http",
+                                           "banner":  "HTTP 200 | Server: Unknown | Title: ",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       },
+                                       {
+                                           "port":  443,
+                                           "protocol":  "TCP",
+                                           "name":  "https",
+                                           "banner":  "HTTP 200 | Server: Unknown | Title: ",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       }
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.100",
+                      "mac":  "64:1C:B0:AF:65:E2",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Network Device",
+                      "open_ports":  [
+
+                                     ],
+                      "services":  [
+
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.118",
+                      "mac":  "34:60:F9:8C:A1:CC",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Server/Web",
+                      "open_ports":  [
+                                         80,
+                                         443
+                                     ],
+                      "services":  [
+                                       {
+                                           "port":  80,
+                                           "protocol":  "TCP",
+                                           "name":  "http",
+                                           "banner":  "HTTP 200 | Server: Unknown | Title: Unknown",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       },
+                                       {
+                                           "port":  443,
+                                           "protocol":  "TCP",
+                                           "name":  "tcp",
+                                           "banner":  "Unknown",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       }
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.123",
+                      "mac":  "00:00:00:00:00:00",
+                      "hostname":  "Apple, Inc.",
+                      "vendor":  "Apple, Inc.",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Mobile/Tablet",
+                      "open_ports":  [
+                                         445
+                                     ],
+                      "services":  [
+                                       {
+                                           "port":  445,
+                                           "protocol":  "TCP",
+                                           "name":  "tcp",
+                                           "banner":  "Unknown",
+                                           "version":  "",
+                                           "cves":  [
+                                                        "AUDIT-SMB|https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0144"
+                                                    ]
+                                       }
+                                   ],
+                      "risk_score":  10
+                  },
+                  {
+                      "ip":  "192.168.8.127",
+                      "mac":  "8C:D0:B2:22:3D:F9",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Network Device",
+                      "open_ports":  [
+
+                                     ],
+                      "services":  [
+
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.129",
+                      "mac":  "B8:B4:09:04:7A:FC",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Network Device",
+                      "open_ports":  [
+
+                                     ],
+                      "services":  [
+
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.153",
+                      "mac":  "00:31:92:2D:BB:14",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Server/Web",
+                      "open_ports":  [
+                                         80,
+                                         443
+                                     ],
+                      "services":  [
+                                       {
+                                           "port":  80,
+                                           "protocol":  "TCP",
+                                           "name":  "http",
+                                           "banner":  "HTTP 200 | Server: Unknown | Title: Unknown",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       },
+                                       {
+                                           "port":  443,
+                                           "protocol":  "TCP",
+                                           "name":  "https",
+                                           "banner":  "HTTP 200 | Server: Unknown | Title: Unknown",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       }
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.154",
+                      "mac":  "34:60:F9:8C:A1:D4",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Server/Web",
+                      "open_ports":  [
+                                         80,
+                                         443
+                                     ],
+                      "services":  [
+                                       {
+                                           "port":  80,
+                                           "protocol":  "TCP",
+                                           "name":  "http",
+                                           "banner":  "HTTP 200 | Server: Unknown | Title: Unknown",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       },
+                                       {
+                                           "port":  443,
+                                           "protocol":  "TCP",
+                                           "name":  "tcp",
+                                           "banner":  "Unknown",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       }
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.158",
+                      "mac":  "D0:3F:AA:65:3E:78",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Network Device",
+                      "open_ports":  [
+
+                                     ],
+                      "services":  [
+
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.161",
+                      "mac":  "00:31:92:2D:BA:B8",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Server/Web",
+                      "open_ports":  [
+                                         80,
+                                         443
+                                     ],
+                      "services":  [
+                                       {
+                                           "port":  80,
+                                           "protocol":  "TCP",
+                                           "name":  "http",
+                                           "banner":  "HTTP 200 | Server: Unknown | Title: Unknown",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       },
+                                       {
+                                           "port":  443,
+                                           "protocol":  "TCP",
+                                           "name":  "https",
+                                           "banner":  "HTTP 200 | Server: Unknown | Title: Unknown",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       }
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.162",
+                      "mac":  "FA:08:65:D7:63:F7",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Network Device",
+                      "open_ports":  [
+
+                                     ],
+                      "services":  [
+
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.183",
+                      "mac":  "C8:12:0B:28:62:E6",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  "Samsung",
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Network Device",
+                      "open_ports":  [
+                                         8080
+                                     ],
+                      "services":  [
+                                       {
+                                           "port":  8080,
+                                           "protocol":  "TCP",
+                                           "name":  "http",
+                                           "banner":  "HTTP 404 | Server: WebServer | Title: 404 - Not Found",
+                                           "version":  "",
+                                           "cves":  [
+
+                                                    ]
+                                       }
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.186",
+                      "mac":  "AA:FE:F8:43:D8:A4",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Network Device",
+                      "open_ports":  [
+
+                                     ],
+                      "services":  [
+
+                                   ],
+                      "risk_score":  0
+                  },
+                  {
+                      "ip":  "192.168.8.195",
+                      "mac":  "94:DE:B8:64:35:18",
+                      "hostname":  "Unknown Vendor",
+                      "vendor":  "Unknown Vendor",
+                      "manufacturer":  null,
+                      "model":  null,
+                      "friendly_name":  null,
+                      "os_family":  "Linux / macOS / iOS",
+                      "device_type":  "Network Device",
+                      "open_ports":  [
+
+                                     ],
+                      "services":  [
+
+                                   ],
+                      "risk_score":  0
+                  }
+              ]
+}

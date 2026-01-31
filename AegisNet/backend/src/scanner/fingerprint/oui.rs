@@ -2,8 +2,22 @@ pub struct OuiDb;
 
 impl OuiDb {
     pub fn lookup(mac: &str) -> String {
+        // 1. Try Live DB
+        if let Some(vendor) = super::oui_live::OuiLive::lookup(mac) {
+             return vendor;
+        }
+
         let clean = mac.replace(":", "").replace("-", "").to_uppercase();
         if clean.len() < 6 { return "Unknown".to_string(); }
+        
+        // 2. Check for Locally Administered Address (LAA) / Private MAC
+        // If the second least significant bit of the first byte is 1, it's LAA.
+        if let Ok(first_byte) = u8::from_str_radix(&clean[0..2], 16) {
+            if (first_byte & 0b0000_0010) != 0 {
+                return "Private / Randomized Device".to_string();
+            }
+        }
+
         let prefix = &clean[0..6];
 
         match prefix {
@@ -13,11 +27,14 @@ impl OuiDb {
             "00254B" | "0025BC" | "002608" | "00264A" | "0026B0" | "0026BB" | "080007" | "086D41" |
             "0050E4" | "040CCE" | "041557" | "041E64" | "042665" | "04489A" | "045453" | "0469F8" |
             "000000" | "000393" | "000502" | "000A27" | "000A95" | "000D93" | "0010FA" | "001124" |
-            "BC5C4C" | "F01898" | "7C6DF8" | "FE5F01" | "24F6FA" | "5855CA" | "40D32D" | "A4D1D2" => "Apple, Inc.".to_string(),
+            "BC5C4C" | "F01898" | "7C6DF8" | "FE5F01" | "24F6FA" | "5855CA" | "40D32D" | "A4D1D2" | "D03FAA" => "Apple, Inc.".to_string(),
             
             // SAMSUNG
             "001247" | "001599" | "001632" | "0017C9" | "0018AF" | "001A83" | "001D25" | "001E7D" |
-            "847E40" | "147590" | "1867B0" | "1C5A3E" | "24F5AA" | "28987B" | "2C683D" | "30074D" => "Samsung Electronics".to_string(),
+            "847E40" | "147590" | "1867B0" | "1C5A3E" | "24F5AA" | "28987B" | "2C683D" | "30074D" | "641CB0" | "B8B409" | "C8120B" => "Samsung Electronics".to_string(),
+            
+            // SILICON LABS (IoT)
+            "94DEB8" | "000B57" => "Silicon Laboratories".to_string(),
             
             // IOT & SMART HOME
             "240AC4" | "ECFABC" | "2462AB" | "246F28" | "24A160" | "24B2DE" | "2C3AE8" | "30AEA4" | 
@@ -29,7 +46,7 @@ impl OuiDb {
             // NETWORKING
             "7483C2" | "F09FC2" | "00156D" | "002722" | "0418D6" | "089CDE" | "0C1A3F" | "18E829" |
             "245A4C" | "24A43C" | "44D9E7" | "602232" | "68D79A" | "70A741" | "784558" | "788A20" => "Ubiquiti Networks".to_string(),
-            "001478" | "0016D4" | "0019E0" | "001F33" | "0026F2" | "149182" | "180F76" | "1C4024" => "TP-Link (Router)".to_string(),
+            "001478" | "0016D4" | "0019E0" | "001F33" | "0026F2" | "149182" | "180F76" | "1C4024" | "003192" => "TP-Link (Router)".to_string(),
             "00095B" | "000F66" | "00146C" | "00184D" | "001B2F" | "001E2A" | "00223F" | "0024B2" => "Netgear".to_string(),
             "00000C" | "000142" | "000143" | "000163" | "000164" | "000196" | "000197" | "0001C7" |
             "0001C9" | "0001E3" | "00508B" | "006009" | "00602F" | "006047" => "Cisco Systems".to_string(),

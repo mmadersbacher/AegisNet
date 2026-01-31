@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 use tokio::process::Command;
-use crate::scanner::Host;
 
 pub struct ArpScanner;
 

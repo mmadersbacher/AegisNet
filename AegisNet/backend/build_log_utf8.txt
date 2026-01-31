@@ -1,0 +1,1215 @@
+﻿cargo :    Compiling 
+aho-corasick v1.1.4
+In Zeile:1 Zeichen:1
++ cargo build 2> 
+build_log.txt
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (   Compili   
+ ng aho-corasick v    
+1.1.4:String) [],     
+RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+   Compiling 
+libloading v0.8.9
+   Compiling 
+windows_x86_64_msvc 
+v0.36.1
+   Compiling winapi 
+v0.3.9
+   Compiling libc 
+v0.2.180
+   Compiling bitflags 
+v1.3.2
+   Compiling 
+windows-sys v0.36.1
+   Compiling 
+regex-automata v0.4.13
+   Compiling errno 
+v0.2.8
+   Compiling regex 
+v1.12.2
+   Compiling pcap 
+v2.4.0
+   Compiling 
+aegis_net_backend 
+v0.1.0 (D:\Programmier
+en\Random\AegisNet\Aeg
+isNet\backend)
+warning: unused 
+import: `DbBackend`
+  --> src\db.rs:19:35
+   |
+19 |     use sea_orm::
+{schema::Schema, 
+DbBackend};
+   |                  
+                 
+^^^^^^^^^
+   |
+   = note: `#[warn(unu
+sed_imports)]` (part 
+of `#[warn(unused)]`) 
+on by default
+
+warning: unused 
+import: 
+`std::net::IpAddr`
+ --> 
+src\api\scan.rs:6:5
+  |
+6 | use 
+std::net::IpAddr;
+  |     
+^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `crate::servic
+es::scanner::Scanner`
+ --> 
+src\api\scan.rs:7:5
+  |
+7 | use crate::service
+s::scanner::Scanner;
+  |     ^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `self`
+  --> 
+src\api\scan.rs:16:22
+   |
+16 | use crate::scanne
+r::{self, Host};
+   |                  
+    ^^^^
+
+warning: unused 
+import: 
+`http::StatusCode`
+ --> 
+src\api\stats.rs:5:5
+  |
+5 |     
+http::StatusCode,
+  |     
+^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `regex::Regex`
+ --> src\services\norm
+alization.rs:3:5
+  |
+3 | use regex::Regex;
+  |     ^^^^^^^^^^^^
+
+warning: unused 
+import: 
+`crate::scanner::Host`
+ --> src\scanner\disco
+very\arp.rs:3:5
+  |
+3 | use 
+crate::scanner::Host;
+  |     
+^^^^^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `IpAddr`
+ --> src\scanner\disco
+very\tcp.rs:1:16
+  |
+1 | use 
+std::net::{IpAddr, 
+SocketAddr};
+  |                
+^^^^^^
+
+warning: unused 
+import: 
+`crate::scanner::Host`
+ --> src\scanner\disco
+very\tcp.rs:5:5
+  |
+5 | use 
+crate::scanner::Host;
+  |     
+^^^^^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `IpAddr`
+ --> src\scanner\disco
+very\passive.rs:1:16
+  |
+1 | use 
+std::net::{IpAddr, 
+Ipv4Addr, SocketAddr};
+  |                
+^^^^^^
+
+warning: unused 
+imports: `Domain`, 
+`Protocol`, `Socket`, 
+and `Type`
+ --> src\scanner\disco
+very\passive.rs:3:15
+  |
+3 | use 
+socket2::{Socket, 
+Domain, Type, 
+Protocol};
+  |               
+^^^^^^  ^^^^^^  ^^^^  
+^^^^^^^^
+
+warning: unused 
+import: 
+`std::time::Duration`
+ --> src\scanner\disco
+very\icmp.rs:2:5
+  |
+2 | use 
+std::time::Duration;
+  |     
+^^^^^^^^^^^^^^^^^^^
+
+warning: unused 
+import: `SocketAddr`
+ --> src\scanner\disco
+very\llmnr.rs:2:26
+  |
+2 | use 
+std::net::{Ipv4Addr, 
+SocketAddr};
+  |                   
+       ^^^^^^^^^^
+
+warning: unused 
+import: `dns_lookup::l
+ookup_addr`
+ --> src\scanner\disco
+very\mdns.rs:7:5
+  |
+7 | use dns_lookup::lo
+okup_addr;
+  |     ^^^^^^^^^^^^^^
+^^^^^^^^^
+
+warning: unused 
+import: `std::collecti
+ons::HashMap`
+ --> src\scanner\finge
+rprint\snmp.rs:3:5
+  |
+3 | use std::collectio
+ns::HashMap;
+  |     ^^^^^^^^^^^^^^
+^^^^^^^^^^^
+
+warning: variable 
+does not need to be 
+mutable
+  --> src\scanner\disc
+overy\netbios.rs:31:13
+   |
+31 |         let mut 
+packet = vec![
+   |             
+----^^^^^^
+   |             |
+   |             
+help: remove this 
+`mut`
+   |
+   = note: 
+`#[warn(unused_mut)]` 
+(part of 
+`#[warn(unused)]`) on 
+by default
+
+warning: unused 
+variable: `idx`
+  --> src\scanner\disc
+overy\mdns.rs:99:29
+   |
+99 |                 
+if let Some(idx) = pay
+load_str.find(".local"
+) {
+   |                  
+           ^^^ help: 
+if this is 
+intentional, prefix 
+it with an 
+underscore: `_idx`
+   |
+   = note: `#[warn(unu
+sed_variables)]` 
+(part of 
+`#[warn(unused)]`) on 
+by default
+
+warning: unused 
+variable: `idx`
+   --> src\scanner\dis
+covery\mdns.rs:116:30
+    |
+116 |                 
+ if let Some(idx) = pa
+yload_str.find("device
+-info") {
+    |                 
+             ^^^ 
+help: if this is 
+intentional, prefix 
+it with an 
+underscore: `_idx`
+
+warning: variable 
+does not need to be 
+mutable
+  --> src\scanner\disc
+overy\mdns.rs:95:21
+   |
+95 |                 
+let mut host_hint = 
+None;
+   |                  
+   ----^^^^^^^^^
+   |                  
+   |
+   |                  
+   help: remove this 
+`mut`
+
+warning: unused 
+variable: `url`
+  --> src\scanner\disc
+overy\ssdp.rs:70:34
+   |
+70 | ...              
+     let url = 
+line[9..].trim();
+   |                  
+         ^^^ help: if 
+this is intentional, 
+prefix it with an 
+underscore: `_url`
+
+warning: unused 
+variable: `packet`
+  --> src\scanner\traf
+fic\mod.rs:55:29
+   |
+55 |                  
+        Ok(packet) => 
+{
+   |                  
+           ^^^^^^ 
+help: if this is 
+intentional, prefix 
+it with an 
+underscore: `_packet`
+
+warning: variable 
+does not need to be 
+mutable
+  --> src\scanner\traf
+fic\mod.rs:43:17
+   |
+43 |             let 
+mut cap = match Captur
+e::from_device(main_de
+vice) {
+   |                 
+----^^^
+   |                 |
+   |                 
+help: remove this 
+`mut`
+
+warning: value 
+assigned to `banner` 
+is never read
+   --> src\scanner\cor
+e.rs:161:21
+    |
+161 |             let 
+mut banner = String::f
+rom("Unknown");
+    |                 
+    ^^^^^^
+    |
+    = help: maybe it 
+is overwritten before 
+being read?
+    = note: `#[warn(un
+used_assignments)]` 
+(part of 
+`#[warn(unused)]`) on 
+by default
+
+warning: variable 
+does not need to be 
+mutable
+   --> src\scanner\cor
+e.rs:104:13
+    |
+104 |         let mut 
+hostname = if let 
+Some(nb_name) = 
+netbios_map.get(&ip) {
+    |             
+----^^^^^^^^
+    |             |
+    |             
+help: remove this 
+`mut`
+
+warning: value 
+assigned to `os` is 
+never read
+ --> src\scanner\finge
+rprint\os.rs:5:17
+  |
+5 |         let mut 
+os = 
+String::from("Unknown 
+OS");
+  |                 ^^
+  |
+  = help: maybe it is 
+overwritten before 
+being read?
+
+warning: fields 
+`start_port` and 
+`end_port` are never 
+read
+  --> 
+src\api\scan.rs:12:9
+   |
+10 | pub struct 
+ScanRequest {
+   |            
+----------- fields in 
+this struct
+11 |     pub target: 
+String,
+12 |     pub 
+start_port: u16,
+   |         
+^^^^^^^^^^
+13 |     pub 
+end_port: u16,
+   |         ^^^^^^^^
+   |
+   = note: 
+`#[warn(dead_code)]` 
+(part of 
+`#[warn(unused)]`) on 
+by default
+
+warning: struct 
+`ScanResult` is never 
+constructed
+ --> src\services\scan
+ner.rs:8:12
+  |
+8 | pub struct 
+ScanResult {
+  |            
+^^^^^^^^^^
+
+warning: struct 
+`Scanner` is never 
+constructed
+  --> src\services\sca
+nner.rs:14:12
+   |
+14 | pub struct 
+Scanner {
+   |            
+^^^^^^^
+
+warning: associated 
+items `new` and `run` 
+are never used
+  --> src\services\sca
+nner.rs:21:12
+   |
+20 | impl Scanner {
+   | ------------ 
+associated items in 
+this implementation
+21 |     pub fn 
+new(target: IpAddr, 
+start_port: u16, 
+end_port: u16) -> 
+Self {
+   |            ^^^
+...
+29 |     pub async fn 
+run(&self) -> 
+ScanResult {
+   |                  
+^^^
+
+warning: function 
+`scan_port` is never 
+used
+  --> src\services\sca
+nner.rs:61:10
+   |
+61 | async fn 
+scan_port(ip: IpAddr, 
+port: u16) -> bool {
+   |          
+^^^^^^^^^
+
+warning: field 
+`severity` is never 
+read
+  --> src\services\det
+ection.rs:11:5
+   |
+ 8 | struct Rule {
+   |        ---- 
+field in this struct
+...
+11 |     severity: 
+String,
+   |     ^^^^^^^^
+
+warning: struct 
+`DiscoveredHost` is 
+never constructed
+ --> src\services\disc
+overy.rs:9:12
+  |
+9 | pub struct 
+DiscoveredHost {
+  |            
+^^^^^^^^^^^^^^
+
+warning: associated 
+function 
+`scan_subnet` is 
+never used
+  --> src\services\dis
+covery.rs:36:18
+   |
+18 | impl 
+NetworkDiscovery {
+   | 
+--------------------- 
+associated function 
+in this implementation
+...
+36 |     pub async fn 
+scan_subnet(cidr: 
+&str) -> 
+Vec<DiscoveredHost> {
+   |                  
+^^^^^^^^^^^
+
+warning: function 
+`touch_host` is never 
+used
+  --> src\services\dis
+covery.rs:81:10
+   |
+81 | async fn 
+touch_host(ip: 
+IpAddr) {
+   |          
+^^^^^^^^^^
+
+warning: function 
+`get_arp_table` is 
+never used
+  --> src\services\dis
+covery.rs:88:10
+   |
+88 | async fn 
+get_arp_table() -> 
+HashMap<String, 
+String> {
+   |          
+^^^^^^^^^^^^^
+
+warning: function 
+`lookup_vendor` is 
+never used
+   --> src\services\di
+scovery.rs:117:4
+    |
+117 | fn 
+lookup_vendor(mac: 
+&str) -> String {
+    |    ^^^^^^^^^^^^^
+
+warning: struct 
+`Vulnerability` is 
+never constructed
+ --> src\services\cve.
+rs:4:12
+  |
+4 | pub struct 
+Vulnerability {
+  |            
+^^^^^^^^^^^^^
+
+warning: struct `Vulne
+rabilityScanner` is 
+never constructed
+  --> src\services\cve
+.rs:11:12
+   |
+11 | pub struct 
+VulnerabilityScanner;
+   |            
+^^^^^^^^^^^^^^^^^^^^
+
+warning: associated 
+function `scan` is 
+never used
+  --> src\services\cve
+.rs:15:12
+   |
+13 | impl 
+VulnerabilityScanner {
+   | -----------------
+-------- associated 
+function in this 
+implementation
+14 |     // Mock CVE 
+checking based on 
+open ports
+15 |     pub fn 
+scan(open_ports: 
+&[u16]) -> 
+Vec<Vulnerability> {
+   |            ^^^^
+
+warning: trait 
+`ScannerModule` is 
+never used
+  --> src\scanner\mod.
+rs:35:11
+   |
+35 | pub trait 
+ScannerModule {
+   |           
+^^^^^^^^^^^^^
+
+warning: struct 
+`DiscoveryEngine` is 
+never constructed
+  --> src\scanner\disc
+overy\mod.rs:11:12
+   |
+11 | pub struct 
+DiscoveryEngine;
+   |            
+^^^^^^^^^^^^^^^
+
+warning: struct 
+`PassiveSniffer` is 
+never constructed
+ --> src\scanner\disco
+very\passive.rs:8:12
+  |
+8 | pub struct 
+PassiveSniffer;
+  |            
+^^^^^^^^^^^^^^
+
+warning: associated 
+function `listen` is 
+never used
+  --> src\scanner\disc
+overy\passive.rs:11:18
+   |
+10 | impl 
+PassiveSniffer {
+   | 
+------------------- 
+associated function 
+in this implementation
+11 |     pub async fn 
+listen(timeout: 
+Duration) -> 
+Vec<String> {
+   |                  
+^^^^^^
+
+warning: function 
+`listen_multicast` is 
+never used
+  --> src\scanner\disc
+overy\passive.rs:45:10
+   |
+45 | async fn listen_m
+ulticast(port: u16, 
+bind_addr: &str, tx: 
+mpsc::Sender<String>, 
+active_mdns: bool) -> 
+std::io::Result<()> {
+   |          
+^^^^^^^^^^^^^^^^
+
+warning: fields `ip` 
+and `device_role` are 
+never read
+  --> src\scanner\disc
+overy\mdns.rs:11:9
+   |
+10 | pub struct 
+MdnsInfo {
+   |            
+-------- fields in 
+this struct
+11 |     pub ip: 
+String,
+   |         ^^
+...
+14 |     pub 
+device_role: 
+Option<String>,
+   |         
+^^^^^^^^^^^
+   |
+   = note: `MdnsInfo` 
+has derived impls for 
+the traits `Clone` 
+and `Debug`, but 
+these are 
+intentionally ignored 
+during dead code 
+analysis
+
+warning: field `ip` 
+is never read
+  --> src\scanner\disc
+overy\ssdp.rs:10:9
+   |
+ 9 | pub struct 
+UpnpDevice {
+   |            
+---------- field in 
+this struct
+10 |     pub ip: 
+String,
+   |         ^^
+   |
+   = note: 
+`UpnpDevice` has 
+derived impls for the 
+traits `Clone` and 
+`Debug`, but these 
+are intentionally 
+ignored during dead 
+code analysis
+
+warning: struct 
+`FingerprintEngine` 
+is never constructed
+ --> src\scanner\finge
+rprint\mod.rs:9:12
+  |
+9 | pub struct 
+FingerprintEngine;
+  |            
+^^^^^^^^^^^^^^^^^
+
+warning: field 
+`content_type` is 
+never read
+ --> src\scanner\finge
+rprint\http.rs:8:9
+  |
+5 | pub struct 
+HttpFingerprint {
+  |            
+--------------- field 
+in this struct
+...
+8 |     pub 
+content_type: String,
+  |         
+^^^^^^^^^^^^
+
+warning: field 
+`native_lan_man` is 
+never read
+ --> src\scanner\finge
+rprint\smb.rs:7:9
+  |
+5 | pub struct 
+SmbInfo {
+  |            
+------- field in this 
+struct
+6 |     pub 
+native_os: String,
+7 |     pub 
+native_lan_man: 
+String,
+  |         
+^^^^^^^^^^^^^^
+
+warning: struct 
+`TrafficAnalyzer` is 
+never constructed
+ --> src\scanner\traff
+ic\mod.rs:6:12
+  |
+6 | pub struct 
+TrafficAnalyzer {
+  |            
+^^^^^^^^^^^^^^^
+
+warning: associated 
+items `new`, `start`, 
+and `stop` are never 
+used
+  --> src\scanner\traf
+fic\mod.rs:11:12
+   |
+10 | impl 
+TrafficAnalyzer {
+   | 
+-------------------- 
+associated items in 
+this implementation
+11 |     pub fn new() 
+-> Self {
+   |            ^^^
+...
+17 |     pub async fn 
+start(&self) {
+   |                  
+^^^^^
+...
+71 |     pub fn 
+stop(&self) {
+   |            ^^^^
+
+warning: struct 
+`VulnEngine` is never 
+constructed
+ --> src\scanner\vuln\
+mod.rs:3:12
+  |
+3 | pub struct 
+VulnEngine;
+  |            
+^^^^^^^^^^
+
+error: linking with 
+`link.exe` failed: 
+exit code: 1181
+  |
+  = note: 
+"C:\\Program Files 
+(x86)\\Microsoft 
+Visual Studio\\2019\\B
+uildTools\\VC\\Tools\\
+MSVC\\14.29.30133\\bin
+\\HostX64\\x64\\link.e
+xe" "/NOLOGO" "C:\\Use
+rs\\Home\\AppData\\Loc
+al\\Temp\\rustcYpOd94\
+\symbols.o" "<257 
+object files 
+omitted>" "D:\\Program
+mieren\\Random\\AegisN
+et\\AegisNet\\backend\
+\target\\debug\\deps/{
+libdotenvy-1602c953668
+acff2,libtracing_subsc
+riber-aaa90a2b44ef1e34
+,libsharded_slab-90140
+f6af92ef84b,liblazy_st
+atic-58dc5c2d4098de3b,
+libmatchers-12c6dd6788
+04a7aa,libnu_ansi_term
+-6de48721f0101a3d,libt
+hread_local-ae06488eb2
+4342ac,libtracing_log-
+c742808ed25894b8,libpc
+ap-61a9f58a85c21348,li
+berrno-9764c3f19d549f7
+9,libwinapi-772fa0c151
+bc9fca,liblibc-10aa5c6
+060c371f3,libbitflags-
+fdb1ff6701325f47,libwi
+ndows_sys-d4a55f696b83
+cbe6,libdashmap-9197d8
+ff0b500544,libreqwest-
+e85c9d5fb204869a,libhy
+per_rustls-e162a458371
+969c1,libwinreg-b44d1f
+0f4575395c,libwindows_
+sys-bbaf691ef965309b,l
+ibwindows_targets-d2c6
+a2f363090ad3,libipnet-
+ba347b2c3e01dc12,libto
+kio_rustls-d2c9ba3d2a5
+eed55,libencoding_rs-9
+b9da14d04467bd8,libhyp
+er-004ad8c6371a62ca,li
+bwant-fbf872a0c70546df
+,libtry_lock-647315272
+b932168,libh2-8a755107
+b2f90623,libtokio_util
+-18dd4d11a995a966,libs
+ync_wrapper-558cb3d20e
+308a0c,libhttp_body-7a
+febdade07c226c,libhttp
+-c4c22f8d1433e8f6,libf
+nv-48169f8be948e182,li
+bdns_lookup-8073a30317
+9589d8,libsocket2-28f3
+4b8595388439,libwindow
+s_sys-5bc47d193862c770
+,libwindows_targets-1b
+047d285d0c7be3,librege
+x-9dfb978bbe9381f5,lib
+regex_automata-eb433b5
+f04187362,libaho_coras
+ick-f0cbae757ab9dc88,l
+ibregex_syntax-7991079
+45952e1cd,libsea_orm-5
+9b0a6a8b357cb1a,libour
+oboros-c2c20891e51172c
+b,libstatic_assertions
+-a313a6296e1f0b4a,liba
+liasable-f67251b77b667
+bd3,libasync_stream-c3
+769d0b09a01c23,libstru
+m-0705ee24f11fde78,lib
+sea_query_binder-1fc0f
+54b720ab26f,libsqlx-dd
+c5276fd8b6a408,libsqlx
+_sqlite-0ab6ecdb701ac6
+fe,libfutures_executor
+-fcfb1dd828658155,libf
+lume-81a68a85ce0e9cf0,
+libspin-531b63947178e6
+08,liburlencoding-6470
+2e6961d2f199,libfuture
+s_intrusive-fe4376f286
+a380b3,liblibsqlite3_s
+ys-66f70840e3f19b4c,li
+batoi-1412c28d01b9c15f
+,libsqlx_core-1e5fe795
+3b26200b,librustls_pem
+file-2874b8e227e87a1c,
+libbase64-dc7e2e73568e
+b980,libwebpki_roots-1
+3dd590be45f186b,libthi
+serror-b2a11e659fea50a
+2,libindexmap-f819f3b5
+e43315c9,libequivalent
+-d2ac445b30203329,libh
+ashbrown-3e37b6c362f17
+291,libsha2-8a844fd78e
+2938b6,libcpufeatures-
+bc9811fdf5b11081,libdi
+gest-de8c58c811b74233,
+libblock_buffer-107830
+a531e38c51,libcrypto_c
+ommon-76d46aa15f175a09
+,libgeneric_array-376d
+e319ab36b3dd,libtypenu
+m-78cebe4ee26b17b9,lib
+rustls-c0a10a62c7342a5
+d,libsct-f98b96a03ddb6
+410,libwebpki-33f0b6b3
+6b1906e5,libring-bdc48
+fb412fe7c9d,libgetrand
+om-e9bba605e788d1d3,li
+buntrusted-1a05dd861fe
+d7796,libsqlformat-ad9
+bac55f929ec6a,libunico
+de_categories-9a0cc78d
+64650ac8,libnom-bcab8c
+6934a44321,libhashlink
+-f99ffa4cae9b877a,libh
+ashbrown-e67d8bd0bf885
+00a,libahash-a58c4d7d3
+b331961,libzerocopy-75
+b1638b95507dc9,liballo
+cator_api2-37d74e224a2
+c1769,libcrossbeam_que
+ue-3033cfb5898d4ef7,li
+bcrossbeam_utils-165d8
+934f04ac61d,libeither-
+a9090d392f7df6e2,libev
+ent_listener-a75d7ac07
+34ece0b,liburl-1192226
+97f2520f3,libidna-3363
+d170f651eb40,libutf8_i
+ter-2e7d82fba90ec7d2,l
+ibidna_adapter-72ffbb3
+90a59592a,libicu_prope
+rties-068b69f2388f4787
+,libicu_properties_dat
+a-11e7ac2318a21999,lib
+icu_normalizer-ac80410
+672aa14a8,libicu_norma
+lizer_data-fe712dde112
+380c7,libicu_collectio
+ns-ff810c52fcac1d79,li
+bpotential_utf-b69637f
+86175532e,libicu_provi
+der-a22f31c86c3d058b,l
+ibicu_locale_core-479a
+1996476a978a,libtinyst
+r-8fecb3dd5b09be51,lib
+litemap-2c6162ac317859
+61,libwriteable-cf0b35
+9cdcaa2114,libzerovec-
+de9b1c03a30623c2,libze
+rotrie-e0dda2a52cedbda
+a,libyoke-8c0a8d0d0d67
+57f8,libstable_deref_t
+rait-ce9924d13c30de4a,
+libzerofrom-af61dbc291
+be16b3,libsea_query-4c
+453570bbf69966,liborde
+red_float-3a2f3fee44c2
+ef4d,libuuid-f4529b065
+bc5a33a,libgetrandom-3
+b7cd57894b29508,libbig
+decimal-98cf0ca841ed6f
+94,libnum_bigint-05b7c
+d5773a67137,libnum_int
+eger-bdc5b7e787840851,
+librust_decimal-c5298c
+5aa79a3c03,libarrayvec
+-c1a535e1f8e91748,libt
+ime-a0b1b4c43753e257,l
+ibtime_core-eb567541d8
+e352cd,libnum_conv-7cf
+54b4b567b49f4,libderan
+ged-51b2aaef72c82307,l
+ibpowerfmt-73b3b4f7c52
+eaa10,libchrono-b44610
+af1dae6a90,libnum_trai
+ts-cd7958891a3eb141,li
+bfutures-2359c2f7509ca
+0a0,libtower_http-750e
+ccc611d8e739,libbitfla
+gs-4b1c9c63b575e0c0,li
+baxum-b860c91d1a7ad246
+,libserde_path_to_erro
+r-ac19b7811e9f5cff,lib
+serde_json-677ba8bf6e4
+462c8,libzmij-e2fe33bb
+832c5113,libserde_urle
+ncoded-469b3a6254743c6
+e,libryu-c13a26bd1f1d9
+978,libform_urlencoded
+-9a57098ddef41d4e,libp
+ercent_encoding-5fa456
+7a5b588d03,libhyper_ut
+il-5149fd7252ad2968,li
+bhyper-9814620d097ce64
+b,libhttparse-c80fe4f8
+f46f027d,libatomic_wak
+er-dba3b198f38f65ad,li
+bhttpdate-5aae5a3b81b9
+a191,libmatchit-dc1c5a
+ad5314257a,libserde-ff
+2ec410a4c32671,libserd
+e_core-a4447d8c959f31a
+0,libaxum_core-de52b71
+0caacd13d,libmime-231d
+765248dde1cb,libhttp_b
+ody_util-19970ee0795c7
+e82,libhttp_body-e9154
+8aab3e4ff62,libhttp-af
+4110e0c1e822e4,libitoa
+-c25af7f363631f25,libt
+racing-61976abfcfc8267
+2,liblog-102d74bea553e
+035,libtracing_core-e0
+800e61c7cddefa,libonce
+_cell-5e3a8e85e17af18b
+,libtower-fc1ba4187b20
+752a,libsync_wrapper-7
+b4236a1fbbd45c9,libtow
+er_layer-211f093b91166
+ec5,libfutures_util-10
+1b7eedc0ca4e0c,libmemc
+hr-458d0f6e3e3c4481,li
+bfutures_io-f4fdc83196
+5d43ee,libslab-abe09c7
+821f92c83,libfutures_c
+hannel-1b9cbee51c6a4c8
+3,libfutures_sink-d604
+aaf3c02317a6,libfuture
+s_task-0d5d1c1f1d15592
+d,libpin_utils-43af67d
+6d3ced84b,libfutures_c
+ore-fe1a8ced930aea2d,l
+ibtower_service-3c4c2b
+21c3e518ae,libtokio-4b
+fb602605186203,libsock
+et2-1612b74078dce0c7,l
+ibwindows_sys-367b8397
+e9100c27,libwindows_ta
+rgets-b2de5e0a02c6d8cc
+,libbytes-3000ac23dd26
+bbe9,libmio-b0f9a9b722
+f43379,libwindows_sys-
+c41b0979a570c2cd,libpa
+rking_lot-7f8813bd08b3
+4881,libparking_lot_co
+re-25a6fd6ba888affd,li
+bwindows_link-96cbc5d0
+4678fdd0,libcfg_if-ec1
+e20794a94cd90,libsmall
+vec-5dbcc63a32ac8bfd,l
+iblock_api-5f3c2748019
+d06ba,libscopeguard-50
+1eeb4da884ab3a,libpin_
+project_lite-6567fa441
+6ac9d28}.rlib" "<sysro
+ot>\\lib\\rustlib\\x86
+_64-pc-windows-msvc\\l
+ib/{libstd-*,libpanic_
+unwind-*,libcfg_if-*,l
+ibwindows_targets-*,li
+brustc_demangle-*,libs
+td_detect-*,libhashbro
+wn-*,librustc_std_work
+space_alloc-*,libunwin
+d-*,librustc_std_works
+pace_core-*,liballoc-*
+,libcore-*,libcompiler
+_builtins-*}.rlib" 
+"wpcap.lib" 
+"advapi32.lib" 
+"cfgmgr32.lib" 
+"kernel32.lib" 
+"user32.lib" "legacy_s
+tdio_definitions.lib" 
+"C:\\Users\\Home\\.car
+go\\registry\\src\\ind
+ex.crates.io-1949cf8c6
+b5b557f\\windows_x86_6
+4_msvc-0.36.1\\lib\\wi
+ndows.lib" "C:\\Users\
+\Home\\.cargo\\registr
+y\\src\\index.crates.i
+o-1949cf8c6b5b557f\\wi
+ndows_x86_64_msvc-0.48
+.5\\lib\\windows.0.48.
+5.lib" "C:\\Users\\Hom
+e\\.cargo\\registry\\s
+rc\\index.crates.io-19
+49cf8c6b5b557f\\window
+s_x86_64_msvc-0.52.6\\
+lib\\windows.0.52.0.li
+b" "bcrypt.lib" 
+"advapi32.lib" "C:\\Us
+ers\\Home\\.cargo\\reg
+istry\\src\\index.crat
+es.io-1949cf8c6b5b557f
+\\windows_x86_64_msvc-
+0.53.1\\lib\\windows.0
+.53.0.lib" 
+"kernel32.lib" 
+"kernel32.lib" 
+"kernel32.lib" 
+"ntdll.lib" 
+"userenv.lib" 
+"ws2_32.lib" 
+"dbghelp.lib" 
+"/defaultlib:msvcrt" 
+"/NXCOMPAT" "/LIBPATH:
+D:\\Programmieren\\Ran
+dom\\AegisNet\\AegisNe
+t\\backend\\target\\de
+bug\\build\\ring-93998
+bf70ac0adf6\\out" "/LI
+BPATH:D:\\Programmiere
+n\\Random\\AegisNet\\A
+egisNet\\backend\\targ
+et\\debug\\build\\libs
+qlite3-sys-a58f6d24668
+c9f60\\out" "/LIBPATH:
+C:\\Users\\Home\\.carg
+o\\registry\\src\\inde
+x.crates.io-1949cf8c6b
+5b557f\\windows_x86_64
+_msvc-0.53.1\\lib" "/L
+IBPATH:C:\\Users\\Home
+\\.cargo\\registry\\sr
+c\\index.crates.io-194
+9cf8c6b5b557f\\windows
+_x86_64_msvc-0.36.1\\l
+ib" "/LIBPATH:C:\\User
+s\\Home\\.cargo\\regis
+try\\src\\index.crates
+.io-1949cf8c6b5b557f\\
+windows_x86_64_msvc-0.
+52.6\\lib" "/LIBPATH:C
+:\\Users\\Home\\.cargo
+\\registry\\src\\index
+.crates.io-1949cf8c6b5
+b557f\\windows_x86_64_
+msvc-0.48.5\\lib" "/OU
+T:D:\\Programmieren\\R
+andom\\AegisNet\\Aegis
+Net\\backend\\target\\
+debug\\deps\\aegis_net
+_backend.exe" 
+"/OPT:REF,NOICF" 
+"/DEBUG" 
+"/PDBALTPATH:%_PDB%" "
+/NATVIS:<sysroot>\\lib
+\\rustlib\\etc\\intrin
+sic.natvis" "/NATVIS:<
+sysroot>\\lib\\rustlib
+\\etc\\liballoc.natvis
+" "/NATVIS:<sysroot>\\
+lib\\rustlib\\etc\\lib
+core.natvis" "/NATVIS:
+<sysroot>\\lib\\rustli
+b\\etc\\libstd.natvis"
+  = note: some 
+arguments are 
+omitted. use 
+`--verbose` to show 
+all linker arguments
+  = note: LINK : 
+fatal error LNK1181: 
+Eingabedatei 
+"wpcap.lib" kann 
+nicht ge├Âffnet 
+werden.ÔÉì
+          
+
+warning: 
+`aegis_net_backend` 
+(bin 
+"aegis_net_backend") 
+generated 52 warnings
+error: could not 
+compile 
+`aegis_net_backend` 
+(bin 
+"aegis_net_backend") 
+due to 1 previous 
+error; 52 warnings 
+emitted

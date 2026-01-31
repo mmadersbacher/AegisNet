@@ -1,5 +1,6 @@
 pub mod discovery;
 pub mod fingerprint;
+pub mod traffic;
 pub mod vuln;
 pub mod core;
 
@@ -11,6 +12,9 @@ pub struct Host {
     pub mac: String,
     pub hostname: String,
     pub vendor: String,
+    pub manufacturer: Option<String>, // e.g. "Apple Inc.", "Samsung Electronics"
+    pub model: Option<String>,        // e.g. "MacBookPro18,3", "UE55NU7179"
+    pub friendly_name: Option<String>, // e.g. "Living Room TV", "Dave's iPhone"
     pub os_family: String, // Windows, Linux, MacOS, iOS, Android
     pub device_type: String, // Server, Desktop, Phone, IoT, Router
     pub open_ports: Vec<u16>,

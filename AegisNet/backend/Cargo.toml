@@ -34,3 +34,7 @@ dashmap = "5.5"
 reqwest = { version = "0.11", default-features = false, features = ["json", "blocking", "rustls-tls"] }
 socket2 = "0.5"
 dns-lookup = "2.0"
+windows-sys = { version = "0.61.2", features = ["Win32_Foundation", "Win32_Networking_WinSock", "Win32_System_IO"] }
+
+[build-dependencies]
+winres = "0.1"
